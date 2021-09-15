@@ -62,7 +62,7 @@ today_date = dt.datetime(2011, 12, 11)
 
 #Lifetime Veri Yapısının Hazırlanması
 
-#recency: Son satın alma üzerinden geçen zaman. Haftalık. (daha önce analiz gününe göre, burada kullanıcı özelinde)
+#recency: Son satın alma üzerinden geçen zaman. Haftalık. 
 #T: Analiz tarihinden ne kadar süre önce ilk satın alma yapılmış. Haftalık.
 #frequency: tekrar eden toplam satın alma sayısı (frequency>1)
 #monetary_value: satın alma başına ortalama kazanç
@@ -185,9 +185,6 @@ cltv_12month = cltv_12month.reset_index()
 cltv_12month = cltv_df.merge(cltv_12month, on="CustomerID", how="left")
 
 cltv_12month.sort_values(by="clv", ascending=False).head(10)
-
-# 1 aylık cltv ve 12 aylık cltv değerleri karşılaştırıldığında ilk 5 id'nin aynı olduğu ancak diğer id'lerin farklılık gösterdiği görülmektedir.
-# Bu farklılığa sebep olarak ilk 1 aylık periyotta cltv değerleri bakımında ilk 10'sıra içerisinde yer alan müşterilerin uzun vadeli müşteriler olmadığı ya da recency ve frequency ve monetary değerleri incelendiğinde şirket için 12 aylık bir tabloda ilk 10 sırada kalacak value değerine ulaşamdığı öngörülüyor.
 
 
 cltv = ggf.customer_lifetime_value(bgf,
